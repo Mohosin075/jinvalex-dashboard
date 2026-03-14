@@ -1,31 +1,30 @@
 "use client";
 
 import React from 'react';
-import { HeadphonesIcon, Camera } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import Image from 'next/image';
 
 export default function SettingsPage() {
   return (
-    <div className="p-8 bg-[#F9F9F9] min-h-screen space-y-8">
-      {/* Top Bar */}
-      <div className="flex justify-between items-center">
-        <div>
-          <p className="text-gray-400 text-sm font-medium tracking-tight">Super Admin</p>
-          <h1 className="text-2xl font-bold text-gray-900">Setting</h1>
-        </div>
-        <div className="flex items-center gap-4">
-           
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200">
-            <Image src="/user.png" alt="User" width={40} height={40} className="object-cover" />
+    <div className="p-8 bg-[#F9F9F9] min-h-screen">
+      <div className="max-w-6xl mx-auto space-y-8">
+        {/* Top Bar */}
+        <div className="flex justify-between items-center">
+          <div>
+            <p className="text-gray-400 text-sm font-medium tracking-tight">Super Admin</p>
+            <h1 className="text-2xl font-bold text-gray-900">Setting</h1>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200">
+              <Image src="/user.png" alt="User" width={40} height={40} className="object-cover" />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content Area */}
-      <div className="max-w-6xl">
+        {/* Main Content Area */}
         <div className="flex flex-col lg:flex-row gap-12 items-start">
           {/* Left Side - Form */}
-          <div className="flex-1 space-y-10">
+          <div className="flex-1 space-y-10 w-full">
             <h2 className="text-2xl font-bold text-gray-900">Your Account Settings</h2>
             
             <form className="space-y-6">
@@ -73,8 +72,8 @@ export default function SettingsPage() {
           </div>
 
           {/* Right Side - Profile Image Upload */}
-          <div className="w-full lg:w-80">
-            <div className="bg-[#f3f4f6]/50 rounded-lg p-10 flex flex-col items-center space-y-6">
+          <div className="w-full lg:w-80 flex flex-col items-center">
+            <div className="bg-white rounded-2xl p-10 flex flex-col items-center space-y-6 shadow-sm border border-gray-100 w-full">
               <div className="relative w-48 h-48 rounded-lg overflow-hidden border-4 border-white shadow-xl">
                 <Image src="/user.png" alt="Profile" fill className="object-cover" />
                 <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
