@@ -121,7 +121,7 @@ import { Separator } from "@/components/ui/separator";
 import { TableCell } from "@/components/ui/table";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import { useDeleteSupportMutation, useUpdateSupportStatusMutation, SUPPORT_STATUS } from "@/redux/features/support/supportApi";
+import { useDeleteSupportMutation, useUpdateSupportStatusMutation, SUPPORT_STATUS } from "@/redux/features/supports/supportApi";
 
 interface SupportData {
     id: string;
