@@ -42,12 +42,16 @@ export function AppSidebar() {
                                     const isActive = pathname === item.url || (item.url !== "/" && pathname.startsWith(item.url));
                                     return (
                                         <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton asChild className="h-12 py-0 px-0 hover:bg-transparent">
+                                            <SidebarMenuButton 
+                                                asChild 
+                                                isActive={isActive} 
+                                                className={`h-12 p-0 ${isActive ? "!bg-[#0052FF] hover:!bg-[#0052FF]" : "hover:bg-gray-50"}`}
+                                            >
                                                 <Link 
                                                     href={item.url} 
-                                                    className={`flex items-center gap-4 px-10 py-3 transition-all duration-200 border-l-[6px] ${isActive ? "bg-[#0052FF] text-white border-[#0052FF]" : "text-[#828282] hover:text-gray-900 border-transparent hover:bg-gray-50"}`}
+                                                    className={`flex items-center gap-4 px-10 py-3 transition-all duration-200 border-l-[6px] w-full h-full ${isActive ? "!text-white !border-[#0052FF] hover:!text-white" : "text-[#828282] hover:text-gray-900 border-transparent"}`}
                                                 >
-                                                    <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-[#828282]"}`} />
+                                                    <item.icon className={`w-5 h-5 ${isActive ? "!text-white" : "text-[#828282]"}`} />
                                                     <div className="flex items-center gap-2">
                                                         <span className="font-medium text-[15px]">{item.title}</span>
                                                         {item.title === "Pro User" && (
