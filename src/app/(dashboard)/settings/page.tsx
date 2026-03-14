@@ -69,29 +69,10 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-600">Password</label>
-                <input 
-                  type="password" 
-                  defaultValue="****************"
-                  className="w-full bg-white border border-gray-200 rounded-xl py-3.5 px-6 outline-none text-gray-700 focus:ring-1 focus:ring-blue-600 transition-all shadow-sm"
-                />
-              </div>
-
-              <button type="button" className="bg-blue-600 text-white px-10 py-3 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-md">
-                Forgot
+              <button type="submit" className="bg-blue-600 text-white px-10 py-3 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-md">
+                Update Info
               </button>
             </form>
-
-            {/* OTP Section */}
-            <div className="space-y-2 pt-10">
-              <label className="text-xs font-bold text-blue-600 uppercase tracking-widest">OTP</label>
-              <input 
-                type="text" 
-                defaultValue="*********************"
-                className="w-full bg-white border border-blue-200 rounded-lg py-3.5 px-6 outline-none text-blue-600 font-medium shadow-sm"
-              />
-            </div>
           </div>
 
           {/* Right Side - Profile Image Upload */}
