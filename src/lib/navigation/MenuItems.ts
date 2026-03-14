@@ -1,5 +1,5 @@
 "use client";
-import { LayoutDashboard, Users, TrendingUp } from "lucide-react";
+import { LayoutDashboard, Users } from "lucide-react";
 
 export interface MenuItem {
     title: string;
@@ -17,11 +17,6 @@ const commonMenuItems: MenuItem[] = [
         title: "User Management",
         url: "/users-management",
         icon: Users,
-    },
-    {
-        title: "Analytics",
-        url: "/analytics",
-        icon: TrendingUp,
     },
 ];
 

@@ -1,120 +1,19 @@
 "use client";
 
-import PhaseEngagementTrend from "@/components/dashboard/analytics/PhaseEngagementTrend";
-import { Button } from "@/components/ui/button";
-import { Users } from "lucide-react";
-import { useGetAnalyticsOverviewQuery } from "@/redux/features/dashboard/dashboardApi";
-import { Skeleton } from "@/components/ui/skeleton";
+import DashboardOverview from "@/components/dashboard/adminOverview/DashboardOverview";
+import { EventsChart } from "@/components/dashboard/adminOverview/EventsChart";
+import { PopularEventsChart } from "@/components/dashboard/adminOverview/PopularEventsChart";
+import UserEngagementOverview from "@/components/dashboard/adminOverview/UserEngagementOverview";
 
 export default function Dashboard() {
-    const { data: analyticsData, isLoading, isError } = useGetAnalyticsOverviewQuery(undefined);
-
-    if (isLoading) {
-        return (
-            <div className="p-6 space-y-8">
-                <div className="flex justify-between items-end">
-                    <div className="space-y-2">
-                        <Skeleton className="h-10 w-64" />
-                        <Skeleton className="h-4 w-96" />
-                    </div>
-                    <div className="flex gap-3">
-                        <Skeleton className="h-10 w-32" />
-                        <Skeleton className="h-10 w-32" />
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                    <Skeleton className="h-32 w-full" />
-                </div>
-                <Skeleton className="h-[400px] w-full" />
-                <div className="grid grid-cols-1 gap-6">
-                    <Skeleton className="h-64 w-full" />
-                </div>
-            </div>
-        );
-    }
-
-    if (isError || !analyticsData?.success) {
-        return (
-            <div className="p-6 flex items-center justify-center min-h-[400px]">
-                <p className="text-destructive font-medium">Error loading analytics overview. Please try again later.</p>
-            </div>
-        );
-    }
-
-    const data = analyticsData.data;
-
     return (
         <div className="p-6 space-y-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <h1 className="text-3xl font-serif text-primary uppercase tracking-widest">Analytics Overview</h1>
-                    <p className="text-muted-foreground mt-2">Real-time performance metrics for the platform.</p>
-                </div>
-                <div className="flex gap-3">
-                    <Button variant="outline" className="text-primary border-primary hover:bg-primary hover:text-white">
-                        Last 30 Days
-                    </Button>
-                    <Button className="bg-primary hover:bg-primary/90 text-white">
-                        Generate Report
-                    </Button>
-                </div>
+            <DashboardOverview />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <EventsChart />
+                <PopularEventsChart />
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                <div className="bg-card p-6 rounded-xl border border-border shadow-sm">
-                    <div className="flex justify-between items-start mb-4">
-                        <span className="text-primary/80 font-medium">Total Users</span>
-                        <Users className="w-5 h-5 text-muted-foreground" />
-                    </div>
-                    <h2 className="text-4xl font-serif text-primary font-bold">{data.totalUsers.count.toLocaleString()}</h2>
-                    <p className="text-xs text-muted-foreground mt-2">
-                        <span className={`font-bold ${data.totalUsers.trend >= 0 ? "text-primary" : "text-destructive"}`}>
-                            {data.totalUsers.trend >= 0 ? "↗" : "↘"} {Math.abs(data.totalUsers.trend)}%
-                        </span> vs last month
-                    </p>
-                </div>
-            </div>
-
-            <div className="bg-card p-6 rounded-xl border border-border shadow-sm">
-                <div className="flex justify-between items-center mb-6">
-                    <div>
-                        <p className="text-primary/60 text-sm">User Activity Trend</p>
-                        <h2 className="text-2xl font-serif text-primary uppercase tracking-widest">Engagement Trend</h2>
-                    </div>
-                    <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase">
-                        ● Live Traffic
-                    </div>
-                </div>
-                <PhaseEngagementTrend data={data.phaseEngagementTrend} />
-            </div>
-
-            <div className="grid grid-cols-1 gap-6">
-                <div className="bg-card p-6 rounded-xl border border-border shadow-sm">
-                    <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-lg font-serif text-primary uppercase tracking-widest">Recent Activity</h2>
-                    </div>
-                    <div className="space-y-4">
-                        {data.recentActivity.map((item: any, index: number) => (
-                            <div key={index}>
-                                <div className="flex items-start gap-3">
-                                    <span className="mt-1 h-2 w-2 rounded-full bg-primary/60" />
-                                    <div>
-                                        <p className="text-sm text-primary">
-                                            <span className="font-semibold">{item.user}</span>: {item.action}
-                                        </p>
-                                        <p className="text-xs text-muted-foreground mt-1">
-                                            {new Date(item.timestamp).toLocaleString()}
-                                        </p>
-                                    </div>
-                                </div>
-                                {index !== data.recentActivity.length - 1 && (
-                                    <div className="mt-3 border-t border-[#FDE8ED]" />
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            <UserEngagementOverview />
         </div>
     );
 }

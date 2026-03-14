@@ -29,30 +29,11 @@ export const dashboardApi = baseApi.injectEndpoints({
             }),
             providesTags: ["Dashboard"],
         }),
-
-        getAnalyticsOverview: builder.query({
-            query: () => ({
-                url: "/dashboard/analytics-overview",
-                method: "GET",
-                credentials: "include",
-            }),
-            providesTags: ["Dashboard"],
-        }),
-
-        getEventAnalytics: builder.query({
-            query: (eventId: string) => ({
-                url: `/stats/analytics/${eventId}`,
-                method: "GET",
-            }),
-            providesTags: (result, error, eventId) => [{ type: "EventAnalytics", id: eventId }],
-        }),
     }),
 });
 
 export const { 
     useGetAdminUsersStatsQuery, 
     useGetAdminDashboardStatsQuery, 
-    useGetDashboardStatsQuery, 
-    useGetAnalyticsOverviewQuery,
-    useGetEventAnalyticsQuery 
+    useGetDashboardStatsQuery 
 } = dashboardApi;
