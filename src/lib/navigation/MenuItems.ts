@@ -1,5 +1,5 @@
 "use client";
-import { LayoutDashboard, Users } from "lucide-react";
+import { LayoutDashboard, UserCheck, User, CreditCard, Settings } from "lucide-react";
 
 export interface MenuItem {
     title: string;
@@ -14,9 +14,24 @@ const commonMenuItems: MenuItem[] = [
         icon: LayoutDashboard,
     },
     {
-        title: "User Management",
-        url: "/users-management",
-        icon: Users,
+        title: "Pro User",
+        url: "/pro-user",
+        icon: UserCheck,
+    },
+    {
+        title: "Free User",
+        url: "/free-user",
+        icon: User,
+    },
+    {
+        title: "Payment",
+        url: "/payment",
+        icon: CreditCard,
+    },
+    {
+        title: "Settings",
+        url: "/settings",
+        icon: Settings,
     },
 ];
 

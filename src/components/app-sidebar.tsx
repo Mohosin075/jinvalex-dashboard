@@ -13,7 +13,7 @@ import { baseApi } from "@/redux/api/baseApi";
 export function AppSidebar() {
     const pathname = usePathname();
     const role = useAppSelector(selectRole);
-    // Default to admin items if role not found or just use admin items for now as requested
+    // Use admin items for now
     const items = menuItems["admin"]; 
     const router = useRouter();
     const dispatch = useAppDispatch();
@@ -27,26 +27,31 @@ export function AppSidebar() {
     };
 
     return (
-        <Sidebar className="border-r border-sidebar-border bg-sidebar">
-            <SidebarContent className="bg-secondary p-4 h-full flex flex-col justify-between">
+        <Sidebar className="border-r border-sidebar-border bg-white">
+            <SidebarContent className="p-0 h-full flex flex-col justify-between">
                 <div>
-                    <div className="p-4 pb-8">
+                    <div className="p-8 pb-12">
                         <Link href="/" className="block">
-                            <h1 className="font-serif text-xl text-foreground uppercase tracking-widest">ASCELA ADMIN</h1>
-                            <p className="text-xs text-muted-foreground mt-1">Dashboard Control Center</p>
+                            <h1 className="text-4xl font-bold text-black tracking-tighter">name</h1>
                         </Link>
                     </div>
-                    <SidebarGroup>
+                    <SidebarGroup className="px-0">
                         <SidebarGroupContent>
-                            <SidebarMenu className="space-y-2">
+                            <SidebarMenu className="space-y-1">
                                 {items.map((item) => {
                                     const isActive = pathname === item.url;
                                     return (
                                         <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton asChild className="h-16 py-1">
-                                                <Link href={item.url} className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive ? "bg-primary text-white shadow-md" : "text-foreground hover:bg-white/50"}`}>
-                                                    <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-foreground"}`} />
-                                                    <span className="font-medium uppercase text-sm tracking-wide">{item.title}</span>
+                                            <SidebarMenuButton asChild className="h-12 py-0 px-0 hover:bg-transparent">
+                                                <Link 
+                                                    href={item.url} 
+                                                    className={`flex items-center gap-4 px-8 py-3 transition-all duration-200 border-l-4 ${isActive ? "bg-blue-600 text-white border-blue-600" : "text-gray-500 hover:text-gray-900 border-transparent hover:bg-gray-50"}`}
+                                                >
+                                                    <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-400"}`} />
+                                                    <span className="font-medium text-[15px]">{item.title}</span>
+                                                    {item.title === "Pro User" && (
+                                                        <span className="ml-auto text-yellow-400 text-xs">★</span>
+                                                    )}
                                                 </Link>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
@@ -57,31 +62,15 @@ export function AppSidebar() {
                     </SidebarGroup>
                 </div>
                 
-                <div className="mt-auto pt-4 border-t border-sidebar-border/50">
-                    <div className="flex items-center gap-3 mb-4 px-2">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary/60 shadow-sm">
-                            <Image
-                                // src={getImageUrl(myProfile?.data?.profile) || "/user.png"}
-                                src={"/user.png"}
-                                alt="Profile"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div className="overflow-hidden">
-                            <h2 className="text-sm font-serif uppercase tracking-widest text-primary truncate">
-                                {myProfile?.data?.name || "Admin User"}
-                            </h2>
-                            <p className="text-xs text-muted-foreground truncate">
-                                {myProfile?.data?.email || "admin@platform.dk"}
-                            </p>
-                        </div>
-                    </div>
+                <div className="mt-auto p-8 border-t border-gray-100">
                     <button
                         onClick={handleLogout}
-                        className="mt-1 flex items-center justify-center gap-2 px-4 py-2 rounded-full transition-colors duration-200 bg-white text-primary hover:bg-primary hover:text-primary-foreground w-full cursor-pointer text-xs font-semibold tracking-[0.18em] uppercase border border-sidebar-border/60"
+                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg transition-colors duration-200 text-red-500 border border-red-200 hover:bg-red-50 w-full cursor-pointer text-sm font-semibold"
                     >
-                        <span>Logout</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        <span>Sign-out</span>
                     </button>
                 </div>
             </SidebarContent>
