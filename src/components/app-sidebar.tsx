@@ -30,9 +30,16 @@ export function AppSidebar() {
         <Sidebar className="border-r border-sidebar-border bg-white">
             <SidebarContent className="p-0 h-full flex flex-col justify-between">
                 <div>
-                    <div className="p-8 pb-12">
+                    <div className="px-8 py-10 flex items-center gap-2">
+                        <div className="bg-blue-600 p-1.5 rounded-lg">
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.083 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm0 0V20" />
+                            </svg>
+                        </div>
                         <Link href="/" className="block">
-                            <h1 className="text-4xl font-bold text-black tracking-tighter">name</h1>
+                            <h1 className="text-2xl font-bold text-black tracking-tighter">Educate</h1>
                         </Link>
                     </div>
                     <SidebarGroup className="px-0">
@@ -45,13 +52,15 @@ export function AppSidebar() {
                                             <SidebarMenuButton asChild className="h-12 py-0 px-0 hover:bg-transparent">
                                                 <Link 
                                                     href={item.url} 
-                                                    className={`flex items-center gap-4 px-8 py-3 transition-all duration-200 border-l-4 ${isActive ? "bg-blue-600 text-white border-blue-600" : "text-gray-500 hover:text-gray-900 border-transparent hover:bg-gray-50"}`}
+                                                    className={`flex items-center gap-4 px-8 py-3 transition-all duration-200 border-l-4 ${isActive ? "bg-blue-600 text-white border-blue-600" : "text-[#828282] hover:text-gray-900 border-transparent hover:bg-gray-50"}`}
                                                 >
-                                                    <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-400"}`} />
-                                                    <span className="font-medium text-[15px]">{item.title}</span>
-                                                    {item.title === "Pro User" && (
-                                                        <span className="ml-auto text-yellow-400 text-xs">★</span>
-                                                    )}
+                                                    <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-[#828282]"}`} />
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="font-medium text-[15px]">{item.title}</span>
+                                                        {item.title === "Pro User" && (
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-yellow-400"></div>
+                                                        )}
+                                                    </div>
                                                 </Link>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
@@ -62,10 +71,10 @@ export function AppSidebar() {
                     </SidebarGroup>
                 </div>
                 
-                <div className="mt-auto p-8 border-t border-gray-100">
+                <div className="mt-auto p-8">
                     <button
                         onClick={handleLogout}
-                        className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg transition-colors duration-200 text-red-500 border border-red-200 hover:bg-red-50 w-full cursor-pointer text-sm font-semibold"
+                        className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg transition-colors duration-200 text-[#EB5757] border border-[#EB5757] hover:bg-red-50 w-full cursor-pointer text-sm font-medium"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

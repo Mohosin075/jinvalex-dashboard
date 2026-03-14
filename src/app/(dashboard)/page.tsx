@@ -62,7 +62,7 @@ const payoutData = [
 
 export default function Dashboard() {
   return (
-    <div className="p-8 bg-[#f8fafc] min-h-screen space-y-8">
+    <div className="p-8 bg-[#F9F9F9] min-h-screen space-y-8">
       {/* Top Bar */}
       <div className="flex justify-between items-center">
         <div>
