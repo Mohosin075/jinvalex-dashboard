@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import { setCredentials } from "@/redux/features/auth/authSlice";
 import { toast } from "sonner";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
-import Image from "next/image";
 
 const loginSchema = z.object({
     email: z.string().email("Please enter a valid email address"),
@@ -21,7 +20,7 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
-export default function Login_Form() {
+export default function LoginForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [login] = useLoginMutation();

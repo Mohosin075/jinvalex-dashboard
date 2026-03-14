@@ -1,16 +1,5 @@
 import React from 'react';
-import { LucideIcon } from 'lucide-react';
-
-interface StatCardProps {
-  title: string;
-  value: string;
-  trend: string;
-  trendColor: string;
-  icon: LucideIcon | React.ElementType;
-  iconColor: string;
-  iconBg: string;
-  showStar?: boolean;
-}
+import { StatCardProps } from "@/types";
 
 const StatCard: React.FC<StatCardProps> = ({ 
   title, 

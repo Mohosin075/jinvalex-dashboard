@@ -1,23 +1,20 @@
 "use client";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { menuItems } from "@/lib/navigation/MenuItems";
+import { MENU_ITEMS } from "@/constants/navigation";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout, selectRole } from "@/redux/features/auth/authSlice";
-import { useGetUserProfileQuery } from "@/redux/features/user/userApi";
-import { getImageUrl } from "@/utils/imageUrl";
 import { baseApi } from "@/redux/api/baseApi";
+import { Role } from "@/types";
 
 export function AppSidebar() {
     const pathname = usePathname();
-    const role = useAppSelector(selectRole);
-    // Use admin items for now
-    const items = menuItems["admin"]; 
+    const role = useAppSelector(selectRole) as Role || "admin";
+    // Use role-based menu items
+    const items = MENU_ITEMS[role] || MENU_ITEMS["admin"]; 
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const { data: myProfile } = useGetUserProfileQuery();
 
     const handleLogout = () => {
         dispatch(logout());

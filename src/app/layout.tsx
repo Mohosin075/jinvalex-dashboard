@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
-import { ReduxProvider } from "@/Provider/ReduxProvider";
+import { ReduxProvider } from "@/providers/ReduxProvider";
 
 const lora = Lora({
     subsets: ["latin"],

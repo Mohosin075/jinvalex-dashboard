@@ -1,11 +1,9 @@
-import ForgotPassword_Form from "@/components/forms/ForgotPassword_Form";
+import ForgotPasswordForm from "@/components/forms/ForgotPasswordForm";
 
-const page = () => {
+export default function ForgotPasswordPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat p-4" style={{ backgroundImage: "url('/bg.jpg')" }}>
-            <ForgotPassword_Form />
+            <ForgotPasswordForm />
         </div>
     );
-};
-
-export default page;
+}

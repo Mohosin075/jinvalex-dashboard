@@ -19,7 +19,7 @@ const otpSchema = z.object({
 
 type OTPFormData = z.infer<typeof otpSchema>;
 
-export default function OTPVerify_Form() {
+export default function OTPVerifyForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const email = searchParams.get("email") || "your email";

@@ -7,8 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Search, Loader2, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
-import { useGetUsersQuery, useUpdateUserStatusMutation, USER_STATUS } from "@/redux/features/user/userApi";
-import { getImageUrl } from "@/utils/imageUrl";
+import { useGetUsersQuery, useUpdateUserStatusMutation, USER_STATUS } from "@/redux/features/users/userApi";
+import { getImageUrl } from "@/utils";
 import { toast } from "sonner";
 import {
     DropdownMenu,

@@ -1,11 +1,5 @@
-"use client";
 import { LayoutDashboard, UserCheck, User, CreditCard, Settings, FileText } from "lucide-react";
-
-export interface MenuItem {
-    title: string;
-    url: string;
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
+import { MenuItem, Role } from "@/types/navigation";
 
 const commonMenuItems: MenuItem[] = [
     {
@@ -40,8 +34,8 @@ const commonMenuItems: MenuItem[] = [
     },
 ];
 
-export const menuItems: Record<string, MenuItem[]> = {
+export const MENU_ITEMS: Record<Role, MenuItem[]> = {
     admin: commonMenuItems,
     super_admin: commonMenuItems,
-    organizer: commonMenuItems, 
+    organizer: commonMenuItems,
 };

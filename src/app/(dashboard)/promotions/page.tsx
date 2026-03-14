@@ -14,7 +14,7 @@ import {
     useTogglePromotionStatusMutation,
     useCreatePromotionMutation,
     useGetOrganizerPromotionStatsQuery, // Import the new hook
-} from "@/redux/features/promotion/promotionApi";
+} from "@/redux/features/promotions/promotionApi";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";

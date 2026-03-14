@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
-import { useGetNotificationsQuery } from "@/redux/features/notification/notificationApi";
+import { useGetNotificationsQuery } from "@/redux/features/notifications/notificationApi";
 
 interface NotificationItem {
     _id: string;

@@ -7,7 +7,7 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useForgotPasswordMutation } from "@/redux/features/auth/authApi";
 import { toast } from "sonner";
-import { Mail, ArrowLeft, Lock } from "lucide-react";
+import { Mail, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 const forgotPasswordSchema = z.object({
@@ -16,7 +16,7 @@ const forgotPasswordSchema = z.object({
 
 type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
 
-export default function ForgotPassword_Form() {
+export default function ForgotPasswordForm() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const [forgotPassword] = useForgotPasswordMutation();

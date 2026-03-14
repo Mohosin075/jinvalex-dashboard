@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery, BaseQueryFn, FetchArgs, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { logout, setToken } from "../features/auth/authSlice";
+import { TAG_TYPES_LIST } from "@/constants/api";
 
 const baseURL = process.env.NEXT_PUBLIC_BASEURL as string;
 
@@ -43,6 +44,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 export const baseApi = createApi({
     reducerPath: "api",
     baseQuery: baseQueryWithReauth,
-    tagTypes: ["Auth", "User", "Contact", "Dashboard", "Event", "Support", "UserProfile", "MyEvent", "Promotion", "PromotionStats", "OrganizerDashboard", "AdminStats", "Notifications", "Livestream", "ChatMessages", "ChatParticipants", "Chat", "Message"],
+    tagTypes: TAG_TYPES_LIST,
     endpoints: () => ({}),
 });

@@ -256,7 +256,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import NotificationHistory from "@/components/dashboard/notification/NotificationHistory";
 
 import { toast } from "sonner";
-import { useCreateManualNotificationMutation } from "@/redux/features/notification/notificationApi";
+import { useCreateManualNotificationMutation } from "@/redux/features/notifications/notificationApi";
 
 // Map your UI values to API enum values
 const audienceMap: Record<string, string> = {

@@ -8,7 +8,7 @@
 // import { Button } from "@/components/ui/button";
 // import { Badge } from "@/components/ui/badge";
 // import { SidebarTrigger } from "@/components/ui/sidebar";
-// import { useGetUserProfileQuery } from "@/redux/features/user/userApi";
+// import { useGetUsersQuery } from "@/redux/features/users/userApi";
 
 // interface Message {
 //     id: string;
@@ -287,10 +287,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { useGetUserProfileQuery } from "@/redux/features/user/userApi";
-import { useGetChatsQuery, Chat } from "@/redux/features/chat/chatApi";
+import { useGetUserProfileQuery } from "@/redux/features/users/userApi";
+import { useGetChatsQuery, Chat } from "@/redux/features/chats/chatApi";
 import { io, Socket } from "socket.io-client";
-import { useGetMessagesQuery, useSendMessageMutation } from "@/redux/features/message/messageApi";
+import { useGetMessagesQuery, useSendMessageMutation } from "@/redux/features/messages/messageApi";
 import Image from "next/image";
 
 export default function MessagesPage() {
