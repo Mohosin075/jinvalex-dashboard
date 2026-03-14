@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Search, Ban, Crown, BookOpen, Heart, Loader2 } from "lucide-react";
+import { Search, Ban, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useGetUsersQuery, useUpdateUserStatusMutation, USER_STATUS } from "@/redux/features/user/userApi";
 import { getImageUrl } from "@/utils/imageUrl";
@@ -14,13 +14,11 @@ import { toast } from "sonner";
 export default function UserManagement() {
     const [searchTerm, setSearchTerm] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("all");
-    const [subscriptionFilter, setSubscriptionFilter] = useState<string>("all");
     const [page, setPage] = useState(1);
 
     const { data: usersResponse, isLoading, isFetching } = useGetUsersQuery({
         searchTerm: searchTerm || undefined,
         status: statusFilter !== "all" ? statusFilter as USER_STATUS : undefined,
-        subscriptionTier: subscriptionFilter !== "all" ? subscriptionFilter : undefined,
         page,
         limit: 10,
     });
@@ -72,17 +70,6 @@ export default function UserManagement() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                 </div>
-                <Select value={subscriptionFilter} onValueChange={setSubscriptionFilter}>
-                    <SelectTrigger className="w-[180px] bg-input border-none rounded-2xl">
-                        <SelectValue placeholder="All Subscription" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">All Subscription</SelectItem>
-                        <SelectItem value="free">Free</SelectItem>
-                        <SelectItem value="monthly">Monthly</SelectItem>
-                        <SelectItem value="yearly">Yearly</SelectItem>
-                    </SelectContent>
-                </Select>
                 <Select value={statusFilter} onValueChange={setStatusFilter}>
                     <SelectTrigger className="w-[180px] bg-input border-none rounded-2xl">
                         <SelectValue placeholder="All Status" />
@@ -133,21 +120,10 @@ export default function UserManagement() {
                                     {/* lastActive is not in the model but we can show updatedAt if needed */}
                                     <span className="flex items-center gap-1">● Last active: {formatDate(user.updatedAt)}</span>
                                 </div>
-                                <div className="flex gap-4 mt-2">
-                                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                        <BookOpen className="w-3 h-3" /> {user.savedRecipes?.length || 0} saved recipes
-                                    </div>
-                                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                        <Heart className="w-3 h-3 text-red-400" /> {user.favorites?.length || 0} favorites
-                                    </div>
-                                </div>
                             </div>
 
                             {/* Top Right Badges */}
                             <div className="absolute top-4 right-4 flex flex-col items-end gap-2">
-                                <Badge className="bg-primary/20 text-primary hover:bg-primary/20 font-normal border-none flex items-center gap-1">
-                                    <Crown className="w-3 h-3" /> {user.subscriptionTier || 'free'}
-                                </Badge>
                                 <Button 
                                     variant="outline" 
                                     size="sm" 

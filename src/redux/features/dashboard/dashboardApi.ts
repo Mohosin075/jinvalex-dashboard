@@ -30,15 +30,6 @@ export const dashboardApi = baseApi.injectEndpoints({
             providesTags: ["Dashboard"],
         }),
 
-        getSubscriptionStats: builder.query({
-            query: () => ({
-                url: "/dashboard/subscription-stats",
-                method: "GET",
-                credentials: "include",
-            }),
-            providesTags: ["Dashboard"],
-        }),
-
         getAnalyticsOverview: builder.query({
             query: () => ({
                 url: "/dashboard/analytics-overview",
@@ -46,35 +37,6 @@ export const dashboardApi = baseApi.injectEndpoints({
                 credentials: "include",
             }),
             providesTags: ["Dashboard"],
-        }),
-
-        getAllSubscriptions: builder.query({
-            query: (params: { page?: number; limit?: number; status?: string; plan?: string } = {}) => ({
-                url: "/subscription/admin/all-subscriptions",
-                method: "GET",
-                params,
-                credentials: "include",
-            }),
-            providesTags: ["Dashboard"],
-        }),
-
-        getSubscriptionPlans: builder.query({
-            query: () => ({
-                url: "/subscription/admin/plans",
-                method: "GET",
-                credentials: "include",
-            }),
-            providesTags: ["Dashboard"],
-        }),
-
-        updateSubscriptionPlan: builder.mutation({
-            query: ({ id, body }) => ({
-                url: `/subscription/admin/plans/${id}`,
-                method: "PATCH",
-                body,
-                credentials: "include",
-            }),
-            invalidatesTags: ["Dashboard"],
         }),
 
         getEventAnalytics: builder.query({
@@ -91,10 +53,6 @@ export const {
     useGetAdminUsersStatsQuery, 
     useGetAdminDashboardStatsQuery, 
     useGetDashboardStatsQuery, 
-    useGetSubscriptionStatsQuery, 
     useGetAnalyticsOverviewQuery,
-    useGetAllSubscriptionsQuery,
-    useGetSubscriptionPlansQuery,
-    useUpdateSubscriptionPlanMutation,
     useGetEventAnalyticsQuery 
 } = dashboardApi;
