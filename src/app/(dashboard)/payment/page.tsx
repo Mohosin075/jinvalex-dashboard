@@ -38,10 +38,7 @@ export default function PaymentPage() {
           <h1 className="text-2xl font-bold text-gray-900">Payment</h1>
         </div>
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-blue-700 transition-colors">
-            <HeadphonesIcon className="w-4 h-4" />
-            <span>Support</span>
-          </button>
+           
           <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200">
             <Image src="/user.png" alt="User" width={40} height={40} className="object-cover" />
           </div>
