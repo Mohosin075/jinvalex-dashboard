@@ -1,5 +1,5 @@
 "use client";
-import { LayoutDashboard, UserCheck, User, CreditCard, Settings } from "lucide-react";
+import { LayoutDashboard, UserCheck, User, CreditCard, Settings, FileText } from "lucide-react";
 
 export interface MenuItem {
     title: string;
@@ -32,6 +32,11 @@ const commonMenuItems: MenuItem[] = [
         title: "Settings",
         url: "/settings",
         icon: Settings,
+    },
+    {
+        title: "Terms & Conditions",
+        url: "/terms-conditions",
+        icon: FileText,
     },
 ];
 
