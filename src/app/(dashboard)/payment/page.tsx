@@ -17,6 +17,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const paymentData = [
   { name: 'Anna Jensen', phone: '+88 01745826592', email: 'user@gmail.com', subscription: '1 M', amount: '$911', startDate: '1 Jan, 2026', endDate: '1 Jan, 2026', status: 'Paid' },
@@ -91,8 +97,8 @@ export default function PaymentPage() {
                     </span>
                   </TableCell>
                   <TableCell className="py-5 px-6 text-center">
-                    <button className="text-gray-300 hover:text-gray-600 transition-colors">
-                      <MoreHorizontal className="w-6 h-6" />
+                    <button className="bg-[#0052FF] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-blue-700 transition-all">
+                      View
                     </button>
                   </TableCell>
                 </TableRow>

@@ -5,11 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Search, Ban, Loader2 } from "lucide-react";
+import { Search, Loader2, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
 import { useGetUsersQuery, useUpdateUserStatusMutation, USER_STATUS } from "@/redux/features/user/userApi";
 import { getImageUrl } from "@/utils/imageUrl";
 import { toast } from "sonner";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function UserManagement() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -28,9 +34,8 @@ export default function UserManagement() {
     const users = usersResponse?.data || [];
     const meta = usersResponse?.meta;
 
-    const handleStatusUpdate = async (userId: string, currentStatus: string) => {
+    const handleStatusUpdate = async (userId: string, newStatus: USER_STATUS) => {
         try {
-            const newStatus = currentStatus === USER_STATUS.ACTIVE ? USER_STATUS.INACTIVE : USER_STATUS.ACTIVE;
             await updateUserStatus({ id: userId, status: newStatus }).unwrap();
             toast.success(`User status updated to ${newStatus}`);
         } catch (error: any) {
@@ -108,7 +113,7 @@ export default function UserManagement() {
                             <div className="flex-1 space-y-2">
                                 <div className="flex items-center gap-2">
                                     <h3 className="font-serif text-lg font-medium text-foreground">{user.name || "N/A"}</h3>
-                                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'} className={`${user.status === 'active' ? 'bg-green-100 text-green-700 hover:bg-green-100' : 'bg-gray-200 text-gray-600 hover:bg-gray-200'} font-normal text-xs`}>
+                                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'} className={`${user.status === 'active' ? 'bg-green-100 text-green-700 hover:bg-green-100' : user.status === 'deleted' ? 'bg-red-100 text-red-700 hover:bg-red-100' : 'bg-gray-200 text-gray-600 hover:bg-gray-200'} font-normal text-xs`}>
                                         {user.status}
                                     </Badge>
                                 </div>
@@ -122,18 +127,46 @@ export default function UserManagement() {
                                 </div>
                             </div>
 
-                            {/* Top Right Badges */}
-                            <div className="absolute top-4 right-4 flex flex-col items-end gap-2">
-                                <Button 
-                                    variant="outline" 
-                                    size="sm" 
-                                    className={`h-7 rounded-full px-4 text-xs ${user.status === 'inactive' ? 'border-green-200 text-green-500 hover:bg-green-50' : 'border-red-200 text-red-500 hover:bg-red-50 hover:text-red-600'}`}
-                                    onClick={() => handleStatusUpdate(user._id, user.status)}
-                                    disabled={isUpdating}
-                                >
-                                    <Ban className="w-3 h-3 mr-1" /> {user.status === 'inactive' ? 'Unban' : 'Ban'}
-                                </Button>
-                            </div>
+                            {/* Top Right Action Button */}
+                              <div className="absolute top-4 right-4 z-20">
+                                  <DropdownMenu modal={false}>
+                                      <DropdownMenuTrigger className="h-8 w-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors outline-none border-none bg-transparent cursor-pointer">
+                                           <MoreHorizontal className="w-5 h-5 text-muted-foreground" />
+                                       </DropdownMenuTrigger>
+                                      <DropdownMenuContent align="end" sideOffset={8} className="w-48 p-2 space-y-2 bg-white border border-gray-100 shadow-2xl rounded-2xl z-[9999] !opacity-100 !visible">
+                                          <DropdownMenuItem 
+                                              className="flex items-center justify-center text-white bg-[#FFB800] hover:bg-[#E6A600] focus:bg-[#E6A600] focus:text-white cursor-pointer py-3 rounded-full font-bold text-base transition-colors border-none outline-none"
+                                              onClick={(e) => {
+                                                  e.preventDefault();
+                                                  handleStatusUpdate(user._id, USER_STATUS.INACTIVE);
+                                              }}
+                                              disabled={isUpdating || user.status === USER_STATUS.INACTIVE}
+                                          >
+                                              Deactivate
+                                          </DropdownMenuItem>
+                                          <DropdownMenuItem 
+                                              className="flex items-center justify-center text-white bg-[#34C759] hover:bg-[#2DB34F] focus:bg-[#2DB34F] focus:text-white cursor-pointer py-3 rounded-full font-bold text-base transition-colors border-none outline-none"
+                                              onClick={(e) => {
+                                                  e.preventDefault();
+                                                  handleStatusUpdate(user._id, USER_STATUS.ACTIVE);
+                                              }}
+                                              disabled={isUpdating || user.status === USER_STATUS.ACTIVE}
+                                          >
+                                              Reactivate
+                                          </DropdownMenuItem>
+                                          <DropdownMenuItem 
+                                              className="flex items-center justify-center text-white bg-[#FF3B30] hover:bg-[#E6352B] focus:bg-[#E6352B] focus:text-white cursor-pointer py-3 rounded-full font-bold text-base transition-colors border-none outline-none"
+                                              onClick={(e) => {
+                                                  e.preventDefault();
+                                                  handleStatusUpdate(user._id, USER_STATUS.DELETED);
+                                              }}
+                                              disabled={isUpdating}
+                                          >
+                                              Delete
+                                          </DropdownMenuItem>
+                                      </DropdownMenuContent>
+                                  </DropdownMenu>
+                              </div>
                         </div>
                     ))
                 )}

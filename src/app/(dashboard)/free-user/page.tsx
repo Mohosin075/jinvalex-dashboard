@@ -17,6 +17,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const freeUsers = [
   { name: 'Anna Jensen', phone: '+88 01745826592', email: 'user@gmail.com', runningCard: '11', date: '1 Jan, 2026', status: 'Approved' },
@@ -90,9 +96,28 @@ export default function FreeUserPage() {
                     </span>
                   </TableCell>
                   <TableCell className="py-5 px-6 text-center">
-                    <button className="text-gray-300 hover:text-gray-600 transition-colors">
-                      <MoreHorizontal className="w-6 h-6" />
-                    </button>
+                    <DropdownMenu modal={false}>
+                        <DropdownMenuTrigger className="text-gray-300 hover:text-gray-600 transition-colors outline-none border-none bg-transparent cursor-pointer">
+                            <MoreHorizontal className="w-6 h-6" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" sideOffset={8} className="w-48 p-2 space-y-2 bg-white border border-gray-100 shadow-2xl rounded-2xl z-[9999] !opacity-100 !visible">
+                            <DropdownMenuItem 
+                                className="flex items-center justify-center text-white bg-[#FFB800] hover:bg-[#E6A600] focus:bg-[#E6A600] focus:text-white cursor-pointer py-3 rounded-full font-bold text-base transition-colors border-none outline-none"
+                            >
+                                Deactivate
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                                className="flex items-center justify-center text-white bg-[#34C759] hover:bg-[#2DB34F] focus:bg-[#2DB34F] focus:text-white cursor-pointer py-3 rounded-full font-bold text-base transition-colors border-none outline-none"
+                            >
+                                Reactivate
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                                className="flex items-center justify-center text-white bg-[#FF3B30] hover:bg-[#E6352B] focus:bg-[#E6352B] focus:text-white cursor-pointer py-3 rounded-full font-bold text-base transition-colors border-none outline-none"
+                            >
+                                Delete
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
               ))}
