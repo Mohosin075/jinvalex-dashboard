@@ -45,71 +45,71 @@
 
 :root {
     --radius: 0.625rem;
-    --background: #FFFDFD;
-    --foreground: #1F2937; /* Gray 800 - Better contrast */
+    --background: #F9F9F9;
+    --foreground: #1F2937;
     --card: #ffffff;
     --card-foreground: #1F2937;
     --popover: #ffffff;
     --popover-foreground: #1F2937;
-    --primary: #F294A8; /* Pink 600 - Accessible with white */
+    --primary: #0052FF;
     --primary-foreground: #ffffff;
-    --secondary: #FAD9DE;
-    --secondary-foreground: #831843; /* Pink 900 */
+    --secondary: #eff6ff;
+    --secondary-foreground: #1e40af;
     --muted: #F3F4F6;
-    --muted-foreground: #6B7280; /* Gray 500 */
-    --accent: #FCE4EC;
-    --accent-foreground: #DB2777;
-    --destructive: #EF4444;
-    --border: #FBCFE8;
-    --input: #E6DBDF;
-    --ring: #DB2777;
-    --chart-1: #DB2777;
-    --chart-2: #E11D48;
-    --chart-3: #BE185D;
-    --chart-4: #9D174D;
-    --chart-5: #831843;
-    --sidebar: #FDE8ED;
-    --sidebar-foreground: #1F2937;
-    --sidebar-primary: #DB2777;
+    --muted-foreground: #6B7280;
+    --accent: #eff6ff;
+    --accent-foreground: #0052FF;
+    --destructive: #FF5A5F;
+    --border: #e2e8f0;
+    --input: #f1f5f9;
+    --ring: #0052FF;
+    --chart-1: #0052FF;
+    --chart-2: #3b82f6;
+    --chart-3: #60a5fa;
+    --chart-4: #93c5fd;
+    --chart-5: #bfdbfe;
+    --sidebar: #ffffff;
+    --sidebar-foreground: #828282;
+    --sidebar-primary: #0052FF;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #FBCFE8;
-    --sidebar-accent-foreground: #DB2777;
-    --sidebar-border: #FBCFE8;
-    --sidebar-ring: #DB2777;
+    --sidebar-accent: #f8fafc;
+    --sidebar-accent-foreground: #0052FF;
+    --sidebar-border: #f1f5f9;
+    --sidebar-ring: #0052FF;
 }
 
 .dark {
-    --background: #2D1B22; /* Dark Pinkish Background */
-    --foreground: #FDE8ED;
-    --card: #3D2630;
-    --card-foreground: #FDE8ED;
-    --popover: #3D2630;
-    --popover-foreground: #FDE8ED;
-    --primary: #F48FB1;
-    --primary-foreground: #2D1B22; /* Dark text on light pink button */
-    --secondary: #5D3A48;
-    --secondary-foreground: #FDE8ED;
-    --muted: #5D3A48;
-    --muted-foreground: #D4A5B3;
-    --accent: #5D3A48;
-    --accent-foreground: #FDE8ED;
-    --destructive: #EF4444;
-    --border: #884D63;
-    --input: #884D63;
-    --ring: #F48FB1;
-    --chart-1: #F48FB1;
-    --chart-2: #F06292;
-    --chart-3: #EC407A;
-    --chart-4: #F8BBD0;
-    --chart-5: #FCE4EC;
-    --sidebar: #362029; /* Dark Sidebar */
-    --sidebar-foreground: #FDE8ED;
-    --sidebar-primary: #F48FB1;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --card: #1e293b;
+    --card-foreground: #f8fafc;
+    --popover: #1e293b;
+    --popover-foreground: #f8fafc;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --secondary: #334155;
+    --secondary-foreground: #f8fafc;
+    --muted: #334155;
+    --muted-foreground: #94a3b8;
+    --accent: #334155;
+    --accent-foreground: #f8fafc;
+    --destructive: #ef4444;
+    --border: #334155;
+    --input: #334155;
+    --ring: #3b82f6;
+    --chart-1: #3b82f6;
+    --chart-2: #60a5fa;
+    --chart-3: #93c5fd;
+    --chart-4: #bfdbfe;
+    --chart-5: #dbeafe;
+    --sidebar: #1e293b;
+    --sidebar-foreground: #94a3b8;
+    --sidebar-primary: #3b82f6;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #5D3A48;
-    --sidebar-accent-foreground: #FDE8ED;
-    --sidebar-border: #884D63;
-    --sidebar-ring: #F48FB1;
+    --sidebar-accent: #334155;
+    --sidebar-accent-foreground: #f8fafc;
+    --sidebar-border: #334155;
+    --sidebar-ring: #3b82f6;
 }
 
 @layer base {
