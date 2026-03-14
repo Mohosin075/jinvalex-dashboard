@@ -53,22 +53,22 @@ export default function ForgotPassword_Form() {
     };
 
     return (
-        <div className="bg-white p-8 md:p-12 rounded-[24px] shadow-sm w-full max-w-[480px] relative">
+        <div className="bg-white p-8 md:p-10 rounded-[12px] shadow-sm w-full max-w-[480px] relative">
             {/* Back Button */}
             <div className="absolute top-8 left-8">
-                <Link href="/auth/login" className="flex items-center text-sm font-medium text-[#5A5A5A] hover:text-[#F48FB1] transition-colors">
+                <Link href="/auth/login" className="flex items-center text-sm font-medium text-[#5A5A5A] hover:text-[#0052FF] transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Sign In
                 </Link>
             </div>
 
-            <form onSubmit={handleSubmit(handleSubmitEmail)} className="w-full mt-8">
+            <form onSubmit={handleSubmit(handleSubmitEmail)} className="w-full mt-10">
                 {/* Icon & Header */}
                 <div className="flex flex-col items-center mb-8">
-                    <div className="w-20 h-20 bg-[#FDE8ED] rounded-full flex items-center justify-center mb-6">
-                        <Mail className="w-8 h-8 text-[#F48FB1]" strokeWidth={1.5} />
+                    <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+                        <Mail className="w-8 h-8 text-[#0052FF]" strokeWidth={1.5} />
                     </div>
-                    <h1 className="text-2xl font-serif text-[#F48FB1] text-center tracking-widest uppercase mb-3">
+                    <h1 className="text-[28px] text-center font-normal text-[#1A1A1A] mb-3">
                         Forgot Password
                     </h1>
                     <p className="text-[#5A5A5A] text-center text-sm">
@@ -78,16 +78,20 @@ export default function ForgotPassword_Form() {
 
                 {/* Email Field */}
                 <div className="mb-8 space-y-2">
-                    <label className="block text-sm font-semibold text-[#4A4A4A] flex items-center gap-2">
-                        <Mail className="w-4 h-4" />
+                    <label className="block text-sm font-medium text-[#1A1A1A]">
                         Email Address
                     </label>
-                    <input 
-                        type="email" 
-                        {...register("email")} 
-                        placeholder="your@email.com" 
-                        className="w-full px-4 py-3 border border-[#F48FB1]/30 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-[#F48FB1]/50 bg-white placeholder:text-gray-400" 
-                    />
+                    <div className="relative">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <Mail className="w-5 h-5" />
+                        </div>
+                        <input 
+                            type="email" 
+                            {...register("email")} 
+                            placeholder="your@email.com" 
+                            className="w-full pl-12 pr-4 py-3.5 border border-[#1D4ED8] rounded-full focus:outline-none focus:ring-1 focus:ring-[#1D4ED8] bg-white placeholder:text-gray-400" 
+                        />
+                    </div>
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                 </div>
 
@@ -95,18 +99,10 @@ export default function ForgotPassword_Form() {
                 <button 
                     type="submit" 
                     disabled={isLoading} 
-                    className="w-full bg-[#F48FB1] hover:bg-[#F06292] text-white font-medium text-lg py-3 px-4 rounded-[12px] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-md shadow-[#F48FB1]/20 mb-8"
+                    className="w-full bg-[#0052FF] hover:bg-blue-700 text-white font-semibold text-base py-3.5 px-4 rounded-full transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-blue-200 mb-8"
                 >
                     {isLoading ? "Sending..." : "Send Verification Code"}
                 </button>
-
-                {/* Security Note */}
-                <div className="bg-[#FFF8F9] rounded-[12px] p-4 flex items-start gap-3">
-                    <Lock className="w-4 h-4 text-[#8D6E63] mt-0.5 shrink-0" />
-                    <p className="text-xs text-[#5A5A5A] leading-relaxed">
-                        <span className="font-semibold text-[#4A4A4A]">Security Note:</span> We'll send a 6-digit verification code to your email address.
-                    </p>
-                </div>
             </form>
         </div>
     );

@@ -65,14 +65,14 @@ export default function ResetPassword_Form() {
     };
 
     return (
-        <div className="bg-white p-8 md:p-12 rounded-[24px] shadow-sm w-full max-w-[480px]">
+        <div className="bg-white p-8 md:p-10 rounded-[12px] shadow-sm w-full max-w-[480px]">
             <form onSubmit={handleSubmit(handleResetPassword)} className="w-full">
                 {/* Icon & Header */}
                 <div className="flex flex-col items-center mb-8">
-                    <div className="w-20 h-20 bg-[#FDE8ED] rounded-full flex items-center justify-center mb-6">
-                        <Lock className="w-8 h-8 text-[#F48FB1]" strokeWidth={1.5} />
+                    <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+                        <Lock className="w-8 h-8 text-[#0052FF]" strokeWidth={1.5} />
                     </div>
-                    <h1 className="text-2xl font-serif text-[#F48FB1] text-center tracking-widest uppercase mb-3">
+                    <h1 className="text-[28px] text-center font-normal text-[#1A1A1A] mb-3">
                         NEW PASSWORD
                     </h1>
                     <p className="text-[#5A5A5A] text-center text-sm">
@@ -82,21 +82,23 @@ export default function ResetPassword_Form() {
 
                 {/* New Password Field */}
                 <div className="mb-6 space-y-2">
-                    <label className="block text-sm font-semibold text-[#4A4A4A] flex items-center gap-2">
-                        <Lock className="w-4 h-4" />
+                    <label className="block text-sm font-medium text-[#1A1A1A]">
                         New Password
                     </label>
                     <div className="relative">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <Lock className="w-5 h-5" />
+                        </div>
                         <input 
                             type={showNewPassword ? "text" : "password"} 
                             {...register("newPassword")} 
                             placeholder="At least 6 characters" 
-                            className="w-full px-4 py-3 border border-[#F48FB1]/30 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-[#F48FB1]/50 bg-white placeholder:text-gray-400 pr-10" 
+                            className="w-full pl-12 pr-12 py-3.5 border border-[#1D4ED8] rounded-full focus:outline-none focus:ring-1 focus:ring-[#1D4ED8] bg-white placeholder:text-gray-400" 
                         />
                         <button 
                             type="button" 
                             onClick={() => setShowNewPassword(!showNewPassword)} 
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                         >
                             {showNewPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                         </button>
@@ -105,22 +107,24 @@ export default function ResetPassword_Form() {
                 </div>
 
                 {/* Confirm Password Field */}
-                <div className="mb-8 space-y-2">
-                    <label className="block text-sm font-semibold text-[#4A4A4A] flex items-center gap-2">
-                        <Lock className="w-4 h-4" />
-                        Confirm New Password
+                <div className="mb-10 space-y-2">
+                    <label className="block text-sm font-medium text-[#1A1A1A]">
+                        Confirm Password
                     </label>
                     <div className="relative">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <Lock className="w-5 h-5" />
+                        </div>
                         <input 
                             type={showConfirmPassword ? "text" : "password"} 
                             {...register("confirmPassword")} 
-                            placeholder="Re-enter password" 
-                            className="w-full px-4 py-3 border border-[#F48FB1]/30 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-[#F48FB1]/50 bg-white placeholder:text-gray-400 pr-10" 
+                            placeholder="Confirm your password" 
+                            className="w-full pl-12 pr-12 py-3.5 border border-[#1D4ED8] rounded-full focus:outline-none focus:ring-1 focus:ring-[#1D4ED8] bg-white placeholder:text-gray-400" 
                         />
                         <button 
                             type="button" 
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                         >
                             {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                         </button>
@@ -128,20 +132,11 @@ export default function ResetPassword_Form() {
                     {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>}
                 </div>
 
-                {/* Password Requirements */}
-                <div className="bg-[#FFF8F9] rounded-[12px] p-4 mb-8">
-                    <p className="font-semibold text-sm text-[#4A4A4A] mb-2">Password Requirements:</p>
-                    <ul className="text-xs text-[#5A5A5A] space-y-1 list-disc list-inside pl-1">
-                        <li>At least 6 characters</li>
-                        <li>Passwords match</li>
-                    </ul>
-                </div>
-
                 {/* Submit Button */}
                 <button 
                     type="submit" 
                     disabled={isLoading} 
-                    className="w-full bg-[#F48FB1] hover:bg-[#F06292] text-white font-medium text-lg py-3 px-4 rounded-[12px] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-md shadow-[#F48FB1]/20"
+                    className="w-full bg-[#0052FF] hover:bg-blue-700 text-white font-semibold text-base py-3.5 px-4 rounded-full transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-blue-200"
                 >
                     {isLoading ? "Resetting..." : "Reset Password"}
                 </button>
