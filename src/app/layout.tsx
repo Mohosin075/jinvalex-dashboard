@@ -11,7 +11,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
     title: {
-        template: "%s | Predictcg",
+        template: "%s | Dashboard",
         default: "Predictcg Dashboard",
     },
     description: "Predictcg Dashboard",
