@@ -10,8 +10,8 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-    title: "Ascela Dashboard",
-    description: "Ascela Dashboard",
+    title: "Predictcg",
+    description: "Predictcg Dashboard",
 };
 
 export default function RootLayout({

@@ -29,7 +29,7 @@ export function AppSidebar() {
                 <div>
                     <div className="px-10 py-12">
                         <Link href="/" className="block">
-                            <h1 className="text-[32px] font-bold text-black tracking-tight leading-none">name</h1>
+                            <h1 className="text-[32px] font-bold text-black tracking-tight leading-none">Predictcg</h1>
                         </Link>
                     </div>
                     <SidebarGroup className="px-0">

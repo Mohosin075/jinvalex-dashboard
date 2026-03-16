@@ -28,7 +28,7 @@ const pieData = [
   { name: 'Pro', value: 70 },
   { name: 'Free', value: 30 },
 ];
-const COLORS = ['#2563eb', '#eff6ff'];
+const COLORS = ['#2563eb', '#94a3b8'];
 
 const earningData = [
   { name: 'Jan', value: 50 },

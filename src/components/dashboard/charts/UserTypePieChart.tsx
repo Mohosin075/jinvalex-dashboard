@@ -41,11 +41,11 @@ const UserTypePieChart: React.FC<UserTypePieChartProps> = ({ data, colors }) => 
                 </div>
                 <div className="absolute right-0 top-1/2 transform -translate-y-1/2 space-y-4">
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                        <div className="w-3 h-3 rounded-full bg-[#2563eb]"></div>
                         <span className="text-sm text-gray-400">Pro</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-blue-50"></div>
+                        <div className="w-3 h-3 rounded-full bg-[#94a3b8]"></div>
                         <span className="text-sm text-gray-400">Free</span>
                     </div>
                 </div>

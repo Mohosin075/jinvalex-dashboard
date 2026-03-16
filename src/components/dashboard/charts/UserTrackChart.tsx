@@ -32,7 +32,7 @@ const UserTrackChart: React.FC<UserTrackChartProps> = ({ data }) => {
                         <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} />
                         <Tooltip />
                         <Area type="monotone" dataKey="pro" stroke="#2563eb" strokeWidth={3} fillOpacity={1} fill="url(#colorPro)" />
-                        <Area type="monotone" dataKey="free" stroke="#e2e8f0" strokeWidth={3} fill="transparent" />
+                        <Area type="monotone" dataKey="free" stroke="#94a3b8" strokeWidth={3} fill="transparent" />
                     </AreaChart>
                 </ResponsiveContainer>
                 <div className="absolute top-[120px] left-[50%] transform -translate-x-1/2 bg-white px-3 py-1 rounded-lg shadow-md border border-gray-100 text-xs font-bold text-gray-700">

@@ -1,4 +1,4 @@
-export const APP_NAME = "Ascela Dashboard";
+export const APP_NAME = "Predictcg";
 
 export const COLORS = {
     primary: "#0052FF",
