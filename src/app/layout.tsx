@@ -10,7 +10,10 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-    title: "Predictcg",
+    title: {
+        template: "%s | Predictcg",
+        default: "Predictcg Dashboard",
+    },
     description: "Predictcg Dashboard",
 };
 

@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import OTPVerifyForm from "@/components/forms/OTPVerifyForm";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+    title: "Verify OTP",
+};
 
 const page = () => {
     return (
